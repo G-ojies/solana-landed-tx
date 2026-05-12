@@ -24,6 +24,8 @@
 
 pub mod error;
 pub mod estimator;
+pub mod sender;
 
 pub use error::{LandedTxError, Result};
 pub use estimator::{FeeEstimate, FeeEstimator};
+pub use sender::{FeeStrategy, LandedTx, RetryConfig, Sender};
