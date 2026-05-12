@@ -1,0 +1,18 @@
+[package]
+name = "solana-landed-tx"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+description = "Reliable Solana transaction landing: priority fee estimation + send-and-confirm with retry."
+readme = "README.md"
+keywords = ["solana", "blockchain", "priority-fee", "transaction"]
+categories = ["api-bindings"]
+
+[dependencies]
+serde = { version = "1.0.228", features = ["derive"] }
+solana-client = "3.1.14"
+solana-rpc-client-api = "3.1.14"
+solana-sdk = "4.0.1"
+thiserror = "2.0.18"
+tokio = { version = "1.52.3", features = ["full"] }
+tracing = "0.1.44"

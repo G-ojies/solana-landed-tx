@@ -1,0 +1,18 @@
+/target
+**/*.rs.bk
+Cargo.lock.bak
+
+# Test validator artifacts
+test-ledger/
+*.json.bak
+
+# Local keypairs (NEVER commit funded keys)
+*.keypair.json
+keypair-*.json
+.solana-keypair
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
