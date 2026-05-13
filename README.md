@@ -74,15 +74,41 @@ mean:    42519 µLamports/CU
 
 That 30000x spread between p90 and max is exactly why naive fee strategies fail.
 
+## Testing
+
+Unit tests (pure math, no network):
+
+```
+cargo test
+```
+
+Live integration test against a local validator:
+
+```
+# Terminal 1
+solana-test-validator --reset
+
+# Terminal 2
+cargo test --test integration_send -- --ignored --nocapture
+```
+
+Or point at any RPC (devnet, custom localnet, etc.):
+
+```
+SOLANA_LANDED_TX_TEST_RPC=https://api.devnet.solana.com \
+    cargo test --test integration_send -- --ignored --nocapture
+```
+
 ## Roadmap
 
 - [x] Priority fee estimator with percentile breakdowns
 - [x] Account-scoped fee queries
 - [x] Unit tests for percentile math
 - [x] Live mainnet/devnet example
-- [ ] `send_and_confirm_with_retry` with fee bumping
-- [ ] Pluggable RPC backends (vanilla, Helius, Triton)
-- [ ] Telemetry (attempts, total cost, time-to-land)
+- [x] `send_and_confirm_with_retry` with fee bumping
+- [x] Telemetry (attempts, time-to-land, priority lamports paid)
+- [x] Live integration test against `solana-test-validator`
+- [ ] Pluggable RPC backends (Helius, Triton)
 - [ ] Python bindings via PyO3 + maturin
 - [ ] Reproducible mainnet benchmark of 5 strategies
 - [ ] Public results dashboard
