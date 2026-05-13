@@ -58,6 +58,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 ## Live demo
 
+### 1. Fee estimation against real mainnet
+
 ```
 $ cargo run --example estimate_fee -- https://api.mainnet-beta.solana.com
 
@@ -73,6 +75,29 @@ mean:    42519 µLamports/CU
 ```
 
 That 30000x spread between p90 and max is exactly why naive fee strategies fail.
+
+### 2. End-to-end send through the retry sender
+
+```
+$ solana-test-validator --reset &
+$ cargo run --example send_self_transfer
+
+RPC: http://127.0.0.1:8899
+payer: cUnZVHAVG4qnvBoYQUb26iy3obpseComEdmCeZ4CD8X
+requesting airdrop of 1000000000 lamports...
+airdrop confirmed: 16hYvsEP4ZUQMMkaZPC6QTePx6z3A9T48GLbzSYfK1Lj6xb7nAKXivbpivhm68cxB8rcUrgg3aeM234yNmjSHBx
+balance: 1000000000 lamports
+sending self-transfer (1000 lamports) via retry sender...
+
+=== LANDED ===
+signature:      2R2vtuZRNz12zFRoc9WpmwXSTo7cbGd8bo3Gd6NvxsNNLgZamHv7zFQpy5a2fcCx9P3BfseS9xGqDmUcH7QPcaS3
+attempts:       1
+elapsed:        506 ms
+cu_price:       1000 µLamports/CU
+priority paid:  200 lamports
+```
+
+506 ms from airdrop-confirm to landed self-transfer on a fresh validator. Same code path runs against devnet/mainnet — just point at a different RPC.
 
 ## Testing
 
