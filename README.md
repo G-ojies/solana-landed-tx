@@ -1,6 +1,6 @@
 # solana-landed-tx
 
-Reliable Solana transaction landing — priority fee estimation and a battle-tested
+Reliable Solana transaction landing - priority fee estimation and a battle-tested
 send-and-confirm primitive, with a public benchmark of which strategies actually work.
 
 > **Status:** v0.1 alpha. Estimator is functional and tested against mainnet.
