@@ -3,8 +3,8 @@
 Reliable Solana transaction landing - priority fee estimation and a battle-tested
 send-and-confirm primitive, with a public benchmark of which strategies actually work.
 
-> **Status:** v0.1 alpha. Estimator is functional and tested against mainnet.
-> Retry sender and Python bindings in progress.
+> **Status:** v0.1 alpha. Estimator, retry sender, and Python bindings all
+> functional. Tested against mainnet + a local validator. Benchmark harness next.
 
 ## The problem
 
@@ -28,6 +28,33 @@ A single Rust crate (with Python bindings in progress) that does two things:
 
 A reproducible mainnet benchmark of all strategies will be published when the
 sender lands.
+
+## Quick start (Python)
+
+```bash
+pip install maturin
+git clone https://github.com/G-ojies/solana-landed-tx
+cd solana-landed-tx/python
+python -m venv .venv && source .venv/bin/activate
+maturin develop --release
+```
+
+```python
+from solana_landed_tx import FeeEstimator
+
+est = FeeEstimator("https://api.mainnet-beta.solana.com")
+
+# Global estimate
+result = est.estimate()
+print(result)
+# FeeEstimate(p50=0, p75=0, p90=10000, p95=65865, max=178444, ...)
+
+# Or scope to specific writable accounts for a more relevant signal:
+usdc = "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+result = est.estimate([usdc])
+print(f"p95: {result.p95} µLamports/CU")
+print(f"recommended: {result.recommended()} µLamports/CU")
+```
 
 ## Quick start (Rust)
 
@@ -133,8 +160,9 @@ SOLANA_LANDED_TX_TEST_RPC=https://api.devnet.solana.com \
 - [x] `send_and_confirm_with_retry` with fee bumping
 - [x] Telemetry (attempts, time-to-land, priority lamports paid)
 - [x] Live integration test against `solana-test-validator`
+- [x] Python bindings via PyO3 + maturin
 - [ ] Pluggable RPC backends (Helius, Triton)
-- [ ] Python bindings via PyO3 + maturin
+- [ ] Expose `Sender` to Python (currently only `FeeEstimator`)
 - [ ] Reproducible mainnet benchmark of 5 strategies
 - [ ] Public results dashboard
 

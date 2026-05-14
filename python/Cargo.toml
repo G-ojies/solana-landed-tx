@@ -1,0 +1,18 @@
+[package]
+name = "solana-landed-tx-py"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+description = "Python bindings for solana-landed-tx."
+publish = false
+
+[lib]
+name = "solana_landed_tx"
+crate-type = ["cdylib"]
+
+[dependencies]
+solana-landed-tx = { path = ".." }
+solana-client = "3.1.14"
+solana-sdk = "3"
+pyo3 = { version = "0.24", features = ["extension-module", "abi3-py39"] }
+tokio = { version = "1", features = ["rt-multi-thread"] }
