@@ -1,0 +1,4 @@
+strategy,tx_index,signature,sent_ms_from_start,landed_ms_from_start,time_to_land_ms,cu_price_micro_lamports,priority_lamports_paid,attempts,landed
+no_fee,0,5Hqph7yLcTxoRdfWZDaYtNYpq5yFEypd3C4zCViGuzJaWjovqeSrwxbJUcw2egC2Kg7Pz1rUNBKzSTFMN2eT7xuQ,0,753,753,0,0,1,true
+no_fee,1,2HpAyjhDv78ygqLTFJGesehRhZeQvKXZGk6UmVorQfg443RYBbsQp1xtWqg8ic5FAdBitX8i8HrWsr1WFtVoCZCu,1254,2008,754,0,0,1,true
+no_fee,2,5QZ8xrBwXtEsd4fYFZd4SJWbR3ZoqviWPiGX4rFJ38mzzSLQdc6ro7YXRmTkSQiNT9qzzVieg1W2TrvBVRHnPS6c,2510,3264,754,0,0,1,true

@@ -161,9 +161,10 @@ SOLANA_LANDED_TX_TEST_RPC=https://api.devnet.solana.com \
 - [x] Telemetry (attempts, time-to-land, priority lamports paid)
 - [x] Live integration test against `solana-test-validator`
 - [x] Python bindings via PyO3 + maturin
+- [x] Benchmark harness (6 strategies, CSV output) — see `benchmark/`
 - [ ] Pluggable RPC backends (Helius, Triton)
 - [ ] Expose `Sender` to Python (currently only `FeeEstimator`)
-- [ ] Reproducible mainnet benchmark of 5 strategies
+- [ ] Full mainnet benchmark run + writeup (M3 deliverable)
 - [ ] Public results dashboard
 
 ## License

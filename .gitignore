@@ -2,6 +2,9 @@
 **/*.rs.bk
 Cargo.lock.bak
 
+# Benchmark output (committed example is in benchmark/example-output/)
+bench-*/
+
 # Python / maturin artifacts
 __pycache__/
 *.py[cod]

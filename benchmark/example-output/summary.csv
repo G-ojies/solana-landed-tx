@@ -1,0 +1,7 @@
+strategy,txs,landed,landing_rate_pct,mean_time_to_land_ms,median_time_to_land_ms,mean_priority_lamports,total_priority_lamports
+no_fee,3,3,100.0,753.6666666666666,754,0.0,0
+fixed_low,3,3,100.0,755.0,755,200.0,600
+fixed_high,3,3,100.0,753.6666666666666,754,10000.0,30000
+p75,3,3,100.0,754.0,754,10000.0,30000
+p95,3,3,100.0,755.0,754,10000.0,30000
+library_retry,3,3,100.0,754.0,754,10000.0,30000
